@@ -1,19 +1,37 @@
 {
-  "name": "tiny-chat",
-  "version": "1.0.0",
-  "description": "A tiny chat",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/simonauner/tiny-chat.git"
-  },
-  "author": "Simon Auner <simonauner@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/simonauner/tiny-chat/issues"
-  },
-  "homepage": "https://github.com/simonauner/tiny-chat#readme"
+    "name": "tiny-chat",
+    "version": "1.0.0",
+    "description": "A tiny chat",
+    "main": "index.js",
+    "scripts": {
+        "test": "npm test",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/simonauner/tiny-chat.git"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
+    },
+    "author": "Simon Auner <simonauner@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/simonauner/tiny-chat/issues"
+    },
+    "homepage": "https://github.com/simonauner/tiny-chat#readme",
+    "dependencies": {
+        "@babel/core": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "@babel/register": "^7.0.0",
+        "compression": "^1.7.3",
+        "express": "^4.16.4"
+    },
+    "devDependencies": {
+        "eslint": "^5.15.1",
+        "eslint-plugin-react": "^7.12.4",
+        "prettier": "^1.16.4"
+    }
 }
