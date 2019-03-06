@@ -1,0 +1,19 @@
+{
+  "name": "tiny-chat",
+  "version": "1.0.0",
+  "description": "A tiny chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonauner/tiny-chat.git"
+  },
+  "author": "Simon Auner <simonauner@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonauner/tiny-chat/issues"
+  },
+  "homepage": "https://github.com/simonauner/tiny-chat#readme"
+}
