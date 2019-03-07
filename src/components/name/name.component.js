@@ -1,38 +1,43 @@
 import React, { Component } from 'preact-compat';
-const localStorageNameKey = 'tiny-chat_username';
+import { connect } from 'preact-redux';
+import {
+    setUserAction,
+    deleteUserAction,
+} from '../../services/user/user.actions';
+import {
+    removeUserFromLocalStorage,
+    setUserInLocalStorage,
+} from '../../services/user/user.service';
 
-export default class Name extends Component {
-    constructor() {
-        super();
-
-        this.setState({
-            name: window.localStorage.getItem(localStorageNameKey),
-            returning: !!window.localStorage.getItem(localStorageNameKey),
-        });
+class Name extends Component {
+    constructor(props) {
+        super(props);
 
         this.forgetMe = this.forgetMe.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     forgetMe() {
-        window.localStorage.removeItem(localStorageNameKey);
-        this.setState({ name: null, returning: false });
+        removeUserFromLocalStorage();
+        this.props.deleteUserAction();
     }
 
     onSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.target);
+        const name = data.get('name');
 
-        this.setState({ name: data.get('name') });
-        window.localStorage.setItem(localStorageNameKey, this.state.name);
+        setUserInLocalStorage(name);
+        this.props.setUserAction({ name, returning: false });
     }
 
     getWelcomeMessage() {
-        const msg = this.state.returning ? 'Welcome back' : 'Good to go';
+        const msg = this.props.returning
+            ? `Welcome back ${this.props.name}!`
+            : `${this.props.name}, you're good to go!`;
         return (
             <div>
-                {msg} {this.state.name}{' '}
-                <button onClick={this.forgetMe}>Forget me</button>
+                {msg} <button onClick={this.forgetMe}>Forget me</button>
             </div>
         );
     }
@@ -50,6 +55,18 @@ export default class Name extends Component {
     }
 
     render() {
-        return this.state.name ? this.getWelcomeMessage() : this.getInputForm();
+        return this.props.name ? this.getWelcomeMessage() : this.getInputForm();
     }
 }
+
+const mapStateToProps = state => {
+    return { ...state.user };
+};
+
+export default connect(
+    mapStateToProps,
+    {
+        setUserAction: setUserAction,
+        deleteUserAction: deleteUserAction,
+    }
+)(Name);

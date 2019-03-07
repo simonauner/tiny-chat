@@ -12,7 +12,6 @@ export default class CreateChatRoom extends Component {
     onSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(data.get('name'));
 
         // create room in firebase
         const roomsRef = this.db.ref('/chatrooms');
@@ -23,16 +22,22 @@ export default class CreateChatRoom extends Component {
                 name: data.get('name'),
             },
             () => {
-                // go to the chat room
-                console.log(`go to ${data.get('name')}`);
                 window.location = `/chat/${key}`;
             }
         );
     }
 
     render() {
+        if (this.props.loading) {
+            return <div />;
+        }
         return (
             <div>
+                {this.props.roomsExist ? (
+                    <h2>...or create a new one</h2>
+                ) : (
+                    <h2>Be the first one to create a chat room!</h2>
+                )}
                 <form onSubmit={this.onSubmit}>
                     <input type="text" name="name" id="name" required />
                     <button>Create room</button>

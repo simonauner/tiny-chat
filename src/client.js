@@ -1,8 +1,13 @@
 import React from 'preact-compat';
 import ReactDom from 'preact-compat';
 import { BrowserRouter } from 'react-router-dom';
-import Layout from './components/layout/layout.component';
+import { Provider } from 'preact-redux';
 import { initializeApp } from 'firebase/app';
+
+import Layout from './components/layout/layout.component';
+import createStore from './store';
+
+const store = createStore();
 
 // Initialize Firebase
 var config = {
@@ -16,8 +21,10 @@ var config = {
 initializeApp(config);
 
 ReactDom.render(
-    <BrowserRouter>
-        <Layout />
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            <Layout />
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('app')
 );
