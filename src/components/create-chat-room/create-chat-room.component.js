@@ -39,9 +39,9 @@ export default class CreateChatRoom extends Component {
                 ) : (
                     <h2>Be the first one to create a chat room!</h2>
                 )}
-                <form onSubmit={this.onSubmit}>
+                <form pam-form="" onSubmit={this.onSubmit}>
                     <input type="text" name="name" id="name" required />
-                    <button>Create room</button>
+                    <input type="submit" pam-button="primary" value="Go!" />
                 </form>
             </div>
         );

@@ -1,7 +1,27 @@
-body {
-    color: #212121;
-    font-family: 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.02em;
+[margined-box] {
+    margin: 16px;
+}
+
+[center-text] {
+    text-align: center;
+}
+
+[pam-Alert] > :first-child:not(p) {
+    font-size: inherit;
+}
+
+[msg] {
+    margin-top: 10px;
+}
+
+[msg-name] {
+    color: black;
+}
+
+[msg-time] {
+    font-size: 14px;
+}
+
+[msg-content] {
+    margin-top: 4px;
 }

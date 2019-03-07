@@ -6,7 +6,6 @@ export default class ChatRoom extends Component {
     render(props) {
         return (
             <div>
-                this is a chat room
                 <MessagesDisplay roomId={props.match.params.chatRoomId} />
                 <SendMessage roomId={props.match.params.chatRoomId} />
             </div>

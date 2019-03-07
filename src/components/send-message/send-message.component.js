@@ -9,6 +9,15 @@ export default class SendMessage extends Component {
         this.roomId = props.roomId;
         this.db = firebase.database();
         this.onSubmit = this.onSubmit.bind(this);
+
+        this.db
+            .ref(`/chatrooms/${this.roomId}/`)
+            .once('value')
+            .then(snapshot => {
+                this.setState({
+                    name: snapshot.val().name,
+                });
+            });
     }
 
     onSubmit(event) {
@@ -37,11 +46,19 @@ export default class SendMessage extends Component {
     }
 
     render() {
+        const placeholder = this.state.name ? `Message ${this.state.name}` : '';
         return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    <input type="text" name="message" id="message" required />
-                    <button>Send</button>
+            <div pam-alert="success">
+                <form pam-form="" onSubmit={this.onSubmit}>
+                    <input
+                        placeholder={placeholder}
+                        pam-form-width="1-1"
+                        type="text"
+                        name="message"
+                        id="message"
+                        required
+                        autoComplete="off"
+                    />
                 </form>
             </div>
         );

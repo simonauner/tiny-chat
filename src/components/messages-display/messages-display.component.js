@@ -29,18 +29,20 @@ export default class MessagesDisplay extends Component {
             return null;
         }
         return (
-            <div>
+            <div pam-alert="">
                 {Object.keys(this.state.messages).map(key => {
                     const msg = this.state.messages[key];
                     const time = new Date(msg.timestamp);
                     return (
-                        <div key={key}>
+                        <div msg="" key={key}>
                             <div>
-                                <strong>{msg.name}</strong>
+                                <strong msg-name="">{msg.name}</strong>
                                 &nbsp;
-                                {time.toLocaleTimeString()}
+                                <span msg-time="">
+                                    {time.toLocaleTimeString()}
+                                </span>
                             </div>
-                            {msg.message}
+                            <div msg-content="">{msg.message}</div>
                         </div>
                     );
                 })}

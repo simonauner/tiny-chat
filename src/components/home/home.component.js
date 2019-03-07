@@ -87,7 +87,7 @@ class Home extends Component {
             return null;
         }
         return (
-            <div>
+            <div pam-alert="info" margined-box="">
                 {this.getRoomList()}
                 <CreateChatRoom
                     roomsExist={!!this.state.rooms}

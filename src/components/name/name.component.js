@@ -37,7 +37,10 @@ class Name extends Component {
             : `${this.props.name}, you're good to go!`;
         return (
             <div>
-                {msg} <button onClick={this.forgetMe}>Forget me</button>
+                <div pam-typography="headline">{msg}</div>
+                <button pam-button="link" onClick={this.forgetMe}>
+                    Forget me
+                </button>
             </div>
         );
     }
@@ -46,16 +49,23 @@ class Name extends Component {
         return (
             <div>
                 <p>Welcome! Please enter a name to start chatting!</p>
-                <form onSubmit={this.onSubmit}>
+                <form pam-form="" onSubmit={this.onSubmit}>
                     <input type="text" name="name" id="name" required />
-                    <button>Save</button>
+                    <br />
+                    <button pam-button="primary">Save</button>
                 </form>
             </div>
         );
     }
 
     render() {
-        return this.props.name ? this.getWelcomeMessage() : this.getInputForm();
+        return (
+            <div pam-alert="" margined-box="">
+                {this.props.name
+                    ? this.getWelcomeMessage()
+                    : this.getInputForm()}
+            </div>
+        );
     }
 }
 
