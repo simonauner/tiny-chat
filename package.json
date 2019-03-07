@@ -49,6 +49,7 @@
         "eslint": "^5.15.1",
         "eslint-plugin-react": "^7.12.4",
         "nodemon": "^1.18.10",
+        "parcel-plugin-bundle-visualiser": "^1.2.0",
         "prettier": "^1.16.4"
     }
 }
