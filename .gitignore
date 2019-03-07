@@ -65,3 +65,6 @@ typings/
 
 # ignore build folder
 public
+
+# ignore firebase cache
+.firebase
