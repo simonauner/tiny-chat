@@ -56,7 +56,7 @@ class Home extends Component {
         return (
             <div>
                 <h2>Join an existing chat room</h2>
-                <ul>
+                <ul chatroom-list="">
                     {Object.keys(this.state.rooms).map(key => {
                         const roomName = this.state.rooms[key].name;
                         const url = `/chat/${key}`;
@@ -73,7 +73,10 @@ class Home extends Component {
                         }
                         return (
                             <li key={key}>
-                                <Link to={url}>{roomName}</Link> {lastPost}
+                                <Link pam-link="" to={url}>
+                                    {roomName}
+                                </Link>{' '}
+                                {lastPost}
                             </li>
                         );
                     })}

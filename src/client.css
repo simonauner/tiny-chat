@@ -25,3 +25,7 @@
 [msg-content] {
     margin-top: 4px;
 }
+
+[chatroom-list] li {
+    margin-top: 16px;
+}
