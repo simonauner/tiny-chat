@@ -1,10 +1,11 @@
 import React, { Component } from 'preact-compat';
-import { database } from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 export default class CreateChatRoom extends Component {
     constructor() {
         super();
-        this.db = database();
+        this.db = firebase.database();
 
         this.onSubmit = this.onSubmit.bind(this);
     }

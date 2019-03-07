@@ -1,11 +1,12 @@
 import React, { Component } from 'preact-compat';
-import { database } from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 export default class MessagesDisplay extends Component {
     constructor(props) {
         super(props);
         this.roomId = props.roomId;
-        this.db = database();
+        this.db = firebase.database();
         this.messagesRef = this.db.ref(`/messages/${this.roomId}/`);
 
         this.messagesRef.once('value').then(snapshot => {

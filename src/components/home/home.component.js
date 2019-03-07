@@ -1,6 +1,7 @@
 import React, { Component } from 'preact-compat';
 import { Link } from 'react-router-dom';
-import { database } from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 import { connect } from 'preact-redux';
 
 // Components
@@ -32,7 +33,7 @@ class Home extends Component {
     }
 
     fetchChatRooms() {
-        const db = database();
+        const db = firebase.database();
         db.ref('chatrooms')
             .once('value')
             .then(snapshot => {

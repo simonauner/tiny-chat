@@ -1,23 +1,19 @@
 import React, { Component } from 'preact-compat';
-import { database } from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 export default class SendMessage extends Component {
     constructor(props) {
         super(props);
 
         this.roomId = props.roomId;
-        this.db = database();
+        this.db = firebase.database();
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     onSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.target);
-        console.log(
-            `will store message "${data.get('message')}" in room id ${
-                this.roomId
-            }`
-        );
 
         // send new message to the chat
         const messageRef = this.db.ref(`/messages/${this.roomId}/`);
@@ -30,7 +26,6 @@ export default class SendMessage extends Component {
             },
             () => {
                 event.target.elements.message.value = '';
-                console.log(`message sent: ${data.get('message')}`);
             }
         );
 
