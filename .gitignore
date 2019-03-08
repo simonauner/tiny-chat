@@ -68,3 +68,6 @@ public
 
 # ignore firebase cache
 .firebase
+
+# ignore firebase.config.js
+firebase.config.js
