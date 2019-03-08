@@ -4,15 +4,299 @@
         <meta charset="utf-8" />
         <title>Welcome to Tiny Chat</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-            href="https://mrgreentech.github.io/pam/kss-assets/css/pam.css"
-            rel="stylesheet"
-        />
-        <link href="/client.css" rel="stylesheet" />
+        <!-- <link href="/client.css" rel="stylesheet" /> -->
+
+        <style>
+            /** 
+I have taken bits and parts from PAM CSS
+For performance reasons I have not used the entire lib
+https://mrgreentech.github.io/pam/
+See license text below.
+*/
+
+            /**
+PAM License Agreement (BSD License)
+========================================
+
+Copyright 2016, Mr Green & Co Technology AB. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the copyright holder nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Software License Agreement (BSD License)
+========================================
+
+Copyright 2014 Yahoo! Inc. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the Yahoo! Inc. nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL YAHOO! INC. BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Normalize.css License
+=====================
+
+Copyright (c) Nicolas Gallagher and Jonathan Neal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+            /* BASE */
+            *,
+            *::before,
+            *::after {
+                box-sizing: inherit;
+            }
+
+            html {
+                box-sizing: border-box;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 16px;
+            }
+
+            html {
+                line-height: 1.15;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            /* PAM TYPOGRAPHY */
+
+            [pam-typography~='headline'] {
+                font-size: 1.5rem;
+                font-weight: 400;
+                line-height: 1.5;
+            }
+
+            /* PAM MENU */
+            [pam-Menu] [pam-Menu-List] {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+
+            [pam-Menu] [pam-Menu-Item] {
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+
+            [pam-Menu] [pam-Menu-Link]:hover,
+            [pam-Menu] [pam-Menu-Link]:focus {
+                background-color: #ededed;
+            }
+
+            [pam-Menu] [pam-Menu-Link] {
+                color: #757575;
+                padding: 8px 16px;
+                display: block;
+                text-decoration: none;
+                white-space: nowrap;
+            }
+
+            /* PAM ALERT */
+            [pam-Alert] {
+                background: #f5f5f5;
+                border-radius: 4px;
+                border: 1px solid #e8e8e8;
+                color: #444;
+                display: block;
+                line-height: 1;
+                padding: 16px;
+            }
+
+            [pam-Alert~='info'] {
+                background-color: #c8e7ef;
+                border-color: #b4deea;
+                color: #339ab8;
+            }
+
+            [pam-Alert~='success'] {
+                background-color: #b5dfb7;
+                border-color: #a3d7a5;
+                color: #3d8b40;
+            }
+
+            /* PAM BUTTON */
+
+            [pam-Button],
+            a[pam-Button] {
+                background-color: #fff;
+                border-radius: 4px;
+                border: 1px solid #bdbdbd;
+                color: #444;
+                cursor: pointer;
+                display: inline-block;
+                font-family: inherit;
+                font-size: 0.875rem;
+                font-weight: 500;
+                line-height: 1.7;
+                margin: 4px;
+                min-height: 41px;
+                min-width: 88px;
+                padding: 8px 16px;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+                transition: background-color 0.3s ease;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                vertical-align: top;
+                white-space: normal;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-user-drag: none;
+            }
+
+            [pam-Button~='link'],
+            a[pam-Button~='link'] {
+                background-color: transparent;
+                border: none;
+                color: #22b5ff;
+                line-height: normal;
+                text-decoration: none;
+                transition-property: color;
+            }
+            [pam-Button~='link']:hover,
+            a[pam-Button~='link']:hover,
+            [pam-Button~='link']:focus,
+            a[pam-Button~='link']:focus {
+                background-color: initial;
+                color: #00a9fe;
+                text-decoration: underline;
+            }
+
+            /* PAM LINK */
+            [pam-Link],
+            a[pam-Link] {
+                color: #008ed5;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            [pam-Link]:focus,
+            a[pam-Link]:focus,
+            [pam-Link]:hover,
+            a[pam-Link]:hover {
+                color: #006ca2;
+                text-decoration: underline;
+            }
+
+            /* PAM FORM */
+            [pam-Form] input:not([type='checkbox']),
+            [pam-Form] select,
+            [pam-Form] textarea {
+                background-color: #fff;
+                border-radius: 4px;
+                border: 1px solid #e0e0e0;
+                color: #444;
+                display: inline-block;
+                font-family: inherit;
+                font-size: 1rem;
+                height: 41px;
+                line-height: 1;
+                margin: 0 0 8px;
+                padding: 8px 8px;
+                transition: border 0.3s ease;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+            [pam-Form] [pam-Form-Width~='1-1'] {
+                width: 100%;
+            }
+            /* CUSTOM STYLEZ */
+
+            [margined-box] {
+                margin: 16px;
+            }
+
+            [center-text] {
+                text-align: center;
+            }
+
+            [pam-Alert] > :first-child:not(p) {
+                font-size: inherit;
+            }
+
+            [msg] {
+                margin-top: 10px;
+            }
+
+            [msg-name] {
+                color: black;
+            }
+
+            [msg-time] {
+                font-size: 14px;
+            }
+
+            [msg-content] {
+                margin-top: 4px;
+            }
+
+            [chatroom-list] li {
+                margin-top: 16px;
+            }
+        </style>
+
+        <script src="/client.js" defer></script>
     </head>
 
     <body>
         <div id="app"></div>
-        <script src="/client.js"></script>
     </body>
 </html>
