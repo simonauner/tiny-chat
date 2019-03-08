@@ -21,6 +21,7 @@ app.get('*', (req, res) => {
 export function startServer(callback) {
     const port = 8080;
     server = app.listen(port, 'localhost', () => {
+        // eslint-disable-next-line no-console
         console.log(
             `Server is now listening at http://${server.address().address}:${
                 server.address().port
