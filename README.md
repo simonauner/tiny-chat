@@ -74,3 +74,9 @@ So, with these changes:
 
 -   We're now down from around 3 s for the "name box" to paint to 1.7 s. That's 44% shorter time!
 -   For complete rendering we're down from 3.66 s at best to 2.38, a 35% improvement!
+
+Now then, could we go back to separating the Firebase scripts from the app scripts to see if we can cut the time to rendering complete even more?
+
+As it turns out, it doesn't change much. And we still have to wait for Firebase scripts before the app script can be run since it refers to a lot of global `firebase` objects... What if we could wrap that in some kind of promise?
+
+I wrapped the `firebase` global in a `Promise` and then I could load the app script before the Firebase scripts. But once again, it didn't change the timing. And since it introduced an unneccessary complexity, I removed it. Ventures in performance land can lead you to a dead end sometimes. I think for now I have to stop chasing the possible improvements and continue with something else.
