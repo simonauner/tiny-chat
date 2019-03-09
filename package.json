@@ -8,7 +8,8 @@
         "build": "parcel build ./src/index.html --out-dir public",
         "test": "npm test",
         "start": "node index.js",
-        "start:dev": "nodemon index.js"
+        "start:dev": "nodemon index.js",
+        "cd": "npm run build && firebase deploy"
     },
     "repository": {
         "type": "git",
