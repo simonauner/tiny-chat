@@ -17,6 +17,10 @@ class Home extends Component {
     constructor(props) {
         super(props);
 
+        // bind ui functions
+        this.orderAlphabetically = this.orderAlphabetically.bind(this);
+        this.orderByLastPost = this.orderByLastPost.bind(this);
+
         this.setState({
             loading: true,
         });
@@ -29,28 +33,55 @@ class Home extends Component {
                 returning: true,
             });
         }
-
-        this.fetchChatRooms();
     }
 
     fetchChatRooms() {
-        const db = firebase.database();
-        db.ref('chatrooms')
-            .orderByChild('name')
-            .once('value')
-            .then(snapshot => {
-                let orderedRooms = [];
-                snapshot.forEach(s => {
-                    orderedRooms.push({ key: s.key, val: s.val() });
-                    // return false, otherwise forEach is cancelled
-                    return false;
-                });
+        const db = firebase.database().ref('chatrooms');
+        let orderedRooms = [];
 
-                this.setState({
-                    rooms: orderedRooms,
-                    loading: false,
+        if (this.state.orderByLastPost) {
+            db.orderByChild('lastpost/timestamp')
+                .once('value')
+                .then(snapshot => {
+                    let orderedRooms = [];
+                    snapshot.forEach(s => {
+                        orderedRooms.push({ key: s.key, val: s.val() });
+                        // return false, otherwise forEach is cancelled
+                        return false;
+                    });
+                    orderedRooms = orderedRooms.reverse();
+                    this.setState({
+                        rooms: orderedRooms,
+                        loading: false,
+                    });
                 });
-            });
+        } else {
+            db.orderByChild('name')
+                .once('value')
+                .then(snapshot => {
+                    snapshot.forEach(s => {
+                        orderedRooms.push({ key: s.key, val: s.val() });
+                        // return false, otherwise forEach is cancelled
+                        return false;
+                    });
+                    this.setState({
+                        rooms: orderedRooms,
+                        loading: false,
+                    });
+                });
+        }
+    }
+
+    orderAlphabetically() {
+        this.setState({
+            orderByLastPost: false,
+        });
+    }
+
+    orderByLastPost() {
+        this.setState({
+            orderByLastPost: true,
+        });
     }
 
     getRoomList() {
@@ -65,6 +96,23 @@ class Home extends Component {
         return (
             <div>
                 <h2>Join an existing chat room</h2>
+                <div sort-options="">
+                    <a
+                        pam-link=""
+                        onClick={this.orderAlphabetically}
+                        selected={!this.state.orderByLastPost}
+                    >
+                        Sort alphabetically
+                    </a>{' '}
+                    |{' '}
+                    <a
+                        pam-link=""
+                        onClick={this.orderByLastPost}
+                        selected={this.state.orderByLastPost}
+                    >
+                        Sort by last post
+                    </a>
+                </div>
                 <ul chatroom-list="">
                     {this.state.rooms.map(room => {
                         const lastPostData = room.val.lastpost;
@@ -110,6 +158,10 @@ class Home extends Component {
     }
 
     render() {
+        if (this.props.name) {
+            this.fetchChatRooms();
+        }
+
         return (
             <div>
                 <Name />
