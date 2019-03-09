@@ -281,6 +281,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             }
 
             [msg-time] {
+                color: #999;
+            }
+
+            [msg-time],
+            [last-post] {
                 font-size: 14px;
             }
 
@@ -290,6 +295,22 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
             [chatroom-list] li {
                 margin-top: 16px;
+            }
+
+            /* make chat message box scrollable */
+            [layout] {
+                max-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            [chat-room] {
+                display: flex;
+                flex-direction: column;
+            }
+
+            [messages-display] {
+                overflow-y: scroll;
             }
         </style>
 

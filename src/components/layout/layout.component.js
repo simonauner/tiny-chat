@@ -6,7 +6,7 @@ import ChatRoom from '../chat-room/chat-room.component';
 export default class Layout extends Component {
     render() {
         return (
-            <div>
+            <div layout="">
                 <div pam-menu="">
                     <ul pam-menu-list="">
                         <li pam-menu-item="">
