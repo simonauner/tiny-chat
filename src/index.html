@@ -314,8 +314,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             }
 
             /* make chat message box scrollable */
+            /* thanks to https://css-tricks.com/the-trick-to-viewport-units-on-mobile/ */
             [layout] {
-                max-height: 100vh;
+                max-height: 90vh; /* Fallback for browsers that do not support Custom Properties */
+                max-height: calc(var(--vh, 1vh) * 100);
                 display: flex;
                 flex-direction: column;
             }
