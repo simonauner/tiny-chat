@@ -4,9 +4,19 @@ A tiny chat project with Firebase Realtime database
 
 ## Getting started
 
-`npm install`
-
-If you don't have the firebase tools: `npm i -S firebase-tools`
+1. `npm install`
+2. If you don't have the firebase tools: `npm i -S firebase-tools`
+3. Create a `firebase.config.js` file:
+    ```
+    export default {
+        apiKey: <string>,
+        authDomain: <string>,
+        databaseURL: <string>,
+        projectId: <string>,
+        storageBucket: <string>,
+        messagingSenderId: <string>,
+    };
+    ```
 
 ### Dev environment
 
