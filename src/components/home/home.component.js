@@ -36,10 +36,18 @@ class Home extends Component {
     fetchChatRooms() {
         const db = firebase.database();
         db.ref('chatrooms')
+            .orderByChild('name')
             .once('value')
             .then(snapshot => {
+                let orderedRooms = [];
+                snapshot.forEach(s => {
+                    orderedRooms.push({ key: s.key, val: s.val() });
+                    // return false, otherwise forEach is cancelled
+                    return false;
+                });
+
                 this.setState({
-                    rooms: snapshot.val(),
+                    rooms: orderedRooms,
                     loading: false,
                 });
             });
@@ -58,13 +66,10 @@ class Home extends Component {
             <div>
                 <h2>Join an existing chat room</h2>
                 <ul chatroom-list="">
-                    {Object.keys(this.state.rooms).map(key => {
-                        const roomName = this.state.rooms[key].name;
-                        const url = `/chat/${key}`;
-                        const lastPostData = this.state.rooms[key].lastpost;
+                    {this.state.rooms.map(room => {
+                        const lastPostData = room.val.lastpost;
                         let lastPost = null;
                         if (lastPostData) {
-                            // const time = new Date(lastPostData.timestamp);
                             lastPost = (
                                 <span last-post="">
                                     (last activity by {lastPostData.name},{' '}
@@ -76,9 +81,9 @@ class Home extends Component {
                             );
                         }
                         return (
-                            <li key={key}>
-                                <Link pam-link="" to={url}>
-                                    {roomName}
+                            <li key={room.key}>
+                                <Link pam-link="" to={'/chat/' + room.key}>
+                                    {room.val.name}
                                 </Link>{' '}
                                 {lastPost}
                             </li>
