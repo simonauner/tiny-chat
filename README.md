@@ -2,15 +2,33 @@
 
 A tiny chat project with Firebase Realtime database
 
+## Getting started
+
+`npm install`
+
+If you don't have the firebase tools: `npm i -S firebase-tools`
+
+### Dev environment
+
+Use two terminals, one for the web server and one for the frontend watcher.
+
+-   `npm run start:dev` for server nodemon
+-   `npm run dev` for frontend parcel watch
+
+### Production build
+
+1. `npm run build` to build frontend code
+2. `firebase deploy` to deploy to firebase
+
 ## TODO
 
--   Sort chat channels after updated or per alphabetical name
--   ✅Service for date formatting
+-   ✅ Sort chat channels after updated or per alphabetical name
+-   ✅ Service for date formatting
 -   Add Web share API
--   ✅Service for getting and setting user info in localstorage
--   ✅Shrink the JS size!
--   ✅Keep global state if user has added username
--   ✅Styling
+-   ✅ Service for getting and setting user info in localstorage
+-   ✅ Shrink the JS size!
+-   ✅ Keep global state if user has added username
+-   ✅ Styling
 
 ## Left out of scope for now
 
