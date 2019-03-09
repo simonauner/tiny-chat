@@ -4,7 +4,9 @@ A tiny chat project with Firebase Realtime database
 
 ## TODO
 
--   Service for date formatting
+-   Sort chat channels after updated or per alphabetical name
+-   ✅Service for date formatting
+-   Add Web share API
 -   ✅Service for getting and setting user info in localstorage
 -   ✅Shrink the JS size!
 -   ✅Keep global state if user has added username

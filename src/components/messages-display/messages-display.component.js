@@ -1,6 +1,7 @@
 import React, { Component } from 'preact-compat';
 import firebase from 'firebase/app';
 import 'firebase/database';
+import { humanReadableTimeDistanceExact } from '../../services/time/time.service';
 
 export default class MessagesDisplay extends Component {
     constructor(props) {
@@ -29,17 +30,18 @@ export default class MessagesDisplay extends Component {
             return null;
         }
         return (
-            <div pam-alert="">
+            <div pam-alert="" messages-display="">
                 {Object.keys(this.state.messages).map(key => {
                     const msg = this.state.messages[key];
-                    const time = new Date(msg.timestamp);
                     return (
                         <div msg="" key={key}>
                             <div>
                                 <strong msg-name="">{msg.name}</strong>
                                 &nbsp;
                                 <span msg-time="">
-                                    {time.toLocaleTimeString()}
+                                    {humanReadableTimeDistanceExact(
+                                        msg.timestamp
+                                    )}
                                 </span>
                             </div>
                             <div msg-content="">{msg.message}</div>

@@ -11,6 +11,7 @@ import CreateChatRoom from '../create-chat-room/create-chat-room.component';
 // Services
 import { getUserFromLocalStorage } from '../../services/user/user.service';
 import { setUserAction } from '../../services/user/user.actions';
+import { humanReadableTimeDistanceFuzzy } from '../../services/time/time.service';
 
 class Home extends Component {
     constructor(props) {
@@ -63,11 +64,14 @@ class Home extends Component {
                         const lastPostData = this.state.rooms[key].lastpost;
                         let lastPost = null;
                         if (lastPostData) {
-                            const time = new Date(lastPostData.timestamp);
+                            // const time = new Date(lastPostData.timestamp);
                             lastPost = (
-                                <span>
-                                    ({lastPostData.name},{' '}
-                                    {time.toLocaleTimeString()})
+                                <span last-post="">
+                                    (last activity by {lastPostData.name},{' '}
+                                    {humanReadableTimeDistanceFuzzy(
+                                        lastPostData.timestamp
+                                    )}
+                                    )
                                 </span>
                             );
                         }
