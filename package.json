@@ -9,7 +9,7 @@
         "test": "npm test",
         "start": "node index.js",
         "start:dev": "nodemon index.js",
-        "cd": "npm run build && firebase deploy"
+        "cd": "rimraf public && npm run build && firebase deploy"
     },
     "repository": {
         "type": "git",
@@ -51,6 +51,7 @@
         "eslint-plugin-react": "^7.12.4",
         "nodemon": "^1.18.10",
         "parcel-plugin-bundle-visualiser": "^1.2.0",
-        "prettier": "^1.16.4"
+        "prettier": "^1.16.4",
+        "rimraf": "^2.6.3"
     }
 }
