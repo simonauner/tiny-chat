@@ -301,6 +301,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 font-size: 12px;
             }
 
+            [sort-options] a {
+                /* to take care of smaller screens, otherwise row-breaks cause the links to come too close to eachother */
+                display: inline-block;
+                margin-bottom: 8px;
+            }
+
             [sort-options] [selected] {
                 text-decoration: underline;
             }

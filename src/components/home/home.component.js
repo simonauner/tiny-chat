@@ -105,13 +105,15 @@ class Home extends Component {
                         Sort alphabetically
                     </a>{' '}
                     |{' '}
-                    <a
-                        pam-link=""
-                        onClick={this.orderByLastPost}
-                        selected={this.state.orderByLastPost}
-                    >
-                        Sort by last post
-                    </a>
+                    <nobr>
+                        <a
+                            pam-link=""
+                            onClick={this.orderByLastPost}
+                            selected={this.state.orderByLastPost}
+                        >
+                            Sort by last post
+                        </a>
+                    </nobr>
                 </div>
                 <ul chatroom-list="">
                     {this.state.rooms.map(room => {
