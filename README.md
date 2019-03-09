@@ -34,7 +34,7 @@ Use two terminals, one for the web server and one for the frontend watcher.
 
 -   ✅ Sort chat channels after updated or per alphabetical name
 -   ✅ Service for date formatting
--   Add Web share API
+-   ✅ Add Web share API
 -   ✅ Service for getting and setting user info in localstorage
 -   ✅ Shrink the JS size!
 -   ✅ Keep global state if user has added username
