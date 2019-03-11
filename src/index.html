@@ -334,7 +334,19 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             }
 
             [messages-display] {
+                /* force height so that the input box doesnt wander around as you add more messages to a new chat room */
+                height: 90vh; /* Fallback for browsers that do not support Custom Properties */
+                height: calc(var(--vh, 1vh) * 100);
+
+                /* make messages start render from the bottom up */
+                display: flex;
+                flex-direction: column;
+
                 overflow-y: scroll;
+            }
+
+            [messages-display] > :first-child {
+                margin-top: auto !important;
             }
         </style>
 
