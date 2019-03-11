@@ -23,6 +23,16 @@ export default class MessagesDisplay extends Component {
                 messages: snapshot.val(),
             });
         });
+
+        this.scrollToBottom();
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom() {
+        this.afterMessagesElement.scrollIntoView({ behavior: 'smooth' });
     }
 
     render() {
@@ -48,6 +58,11 @@ export default class MessagesDisplay extends Component {
                         </div>
                     );
                 })}
+                <div
+                    ref={el => {
+                        this.afterMessagesElement = el;
+                    }}
+                />
             </div>
         );
     }
